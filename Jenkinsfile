@@ -26,10 +26,42 @@ pipeline {
         }
       }
     }
+// Performing Software Tests
+    stage('TEST') {
+      parallel {
+        stage('Mocha Tests') {
+          steps {
+            sh 'docker run --name nodeapp-dev -d \
+            -p 9000:9000 nodeapp-dev:trunk'
+            sh 'docker run --name test-image -v $PWD:/JUnit \
+            --link=nodeapp-dev -d -p 9001:9000 \
+            test-image:latest'
+          }
+        }
+        stage('Quality Tests') {
+          steps {
+            sh 'docker login --username $DOCKER_USR --password $DOCKER_PSW'
+            sh 'docker tag nodeapp-dev:trunk devjob1234/testjenkins:latest'
+            sh 'docker push devjob1234/testjenkins:latest'
+          }
+        }
+      }
+      post {
+        success {
+            echo 'Build succeeded.'
+        }
+        unstable {
+            echo 'This build returned an unstable status.'
+        }
+        failure {
+            echo 'This build has failed. See logs for details.'
+        }
+      }
+    }
 // Deploying your Software
     stage('DEPLOY') {
           when {
-           branch 'main'  //only run these steps on the master branch
+           branch 'master'  //only run these steps on the master branch
           }
             steps {
                     retry(3) {
