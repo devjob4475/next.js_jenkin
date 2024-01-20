@@ -3,7 +3,6 @@ FROM node:18-alpine AS base
 # สร้างโฟลเดอร์ที่จะใช้เก็บโค้ดของคุณใน Docker image
 WORKDIR /app
 
-# คัดลอก package.json และ package-lock.json ไปยังโฟลเดอร์ที่ใช้งาน
 COPY package*.json ./
 
 # ติดตั้งแพ็คเกจที่จำเป็นและทำความสะอาดแคช
