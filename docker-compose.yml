@@ -9,7 +9,7 @@ services:
    #   POSTGRES_PASSWORD: 1234
    #   POSTGRES_DB: chiccrm
    # volumes:
-      - ./db_data:/var/lib/postgresql/data      
+   #   - ./db_data:/var/lib/postgresql/data      
 
 #  pgadmin:
   #  image: dpage/pgadmin4
@@ -27,9 +27,9 @@ services:
     #  context: ./Back-End/goManageDocker
     #  dockerfile: Dockerfile
   # ports:
-      - 8118:8118
+    #  - 8118:8118
   #  depends_on:
-      - db
+   #   - db
 
  # backendchic:
    # image: backend-chiccrm
@@ -38,7 +38,7 @@ services:
    #   context: ./Back-End/chiccrm-go
    #   dockerfile: Dockerfile
   #  ports:
-      - 7777:7777
+    #  - 7777:7777
     #depends_on:
       #- db
 
