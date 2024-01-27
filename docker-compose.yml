@@ -75,8 +75,8 @@ services:
     #depends_on:
       #- backend
 
-  frontendchic:
-    image: frontend-next-chiccrm
+  frontendtest:
+    image: frontendtest
     restart: always
     build:
      # context: ./Front-End/Chiccrm
