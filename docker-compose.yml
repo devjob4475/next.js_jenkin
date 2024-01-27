@@ -1,0 +1,91 @@
+version: '3.1'
+services:
+
+ # db:
+  #  image: postgres
+   # restart: always
+   # environment:
+   #   POSTGRES_USER: admin
+   #   POSTGRES_PASSWORD: 1234
+   #   POSTGRES_DB: chiccrm
+   # volumes:
+      - ./db_data:/var/lib/postgresql/data      
+
+#  pgadmin:
+  #  image: dpage/pgadmin4
+   # restart: always
+  #  environment:
+    #  PGADMIN_DEFAULT_EMAIL: admin@admin.com
+    #  PGADMIN_DEFAULT_PASSWORD: 1234
+   # ports:
+     # - 8888:80
+
+  #backend:
+  #  image: backend-golang-managedocker
+  #  restart: always
+   # build:
+    #  context: ./Back-End/goManageDocker
+    #  dockerfile: Dockerfile
+  # ports:
+      - 8118:8118
+  #  depends_on:
+      - db
+
+ # backendchic:
+   # image: backend-chiccrm
+   # restart: always
+   # build:
+   #   context: ./Back-End/chiccrm-go
+   #   dockerfile: Dockerfile
+  #  ports:
+      - 7777:7777
+    #depends_on:
+      #- db
+
+  #jenkindata:
+  #  image: jenkin-data
+    #restart: always
+  #  build:
+   #   context: ./Back-End/jenkins/data
+    #  dockerfile: Dockerfile
+    #ports:
+      #- 8080:8080
+    #depends_on:
+      #- db
+
+ # jenkinmaster:
+  #  image: jenkin-master
+  #  restart: always
+   # build:
+   #   context: ./Back-End/jenkins/master
+   #   dockerfile: Dockerfile
+  #  ports:
+   #   - 8080:8080
+  #  depends_on:
+     # - jenkindata
+
+ # frontendmanage:
+   # image: frontend-react-managedocker
+  #  restart: always
+  #  build:
+     # context: ./Front-End/manageDocker
+      #dockerfile: Dockerfile
+    #ports:
+      #- 4444:4444
+    #depends_on:
+      #- backend
+
+  frontendchic:
+    image: frontend-next-chiccrm
+    restart: always
+    build:
+     # context: ./Front-End/Chiccrm
+      dockerfile: Dockerfile
+    ports:
+      - 3003:3003
+    depends_on:
+      - backendchic
+
+volumes:
+  db_data:
+
