@@ -15,7 +15,7 @@ COPY . .
 RUN npm run build
 
 # กำหนดพอร์ตที่แอพของคุณจะทำงานอยู่
-EXPOSE 3000
+EXPOSE 9000
 
 # คำสั่งที่ใช้เริ่มแอพ Next.js
 CMD ["npm", "run","dev"]
