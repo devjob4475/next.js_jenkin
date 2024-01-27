@@ -76,7 +76,7 @@ services:
       #- backend
 
   frontendtest:
-    image: frontendtest
+    image: fronttest
     restart: always
     build:
      # context: ./Front-End/Chiccrm
@@ -86,6 +86,6 @@ services:
    # depends_on:
       #- backendchic
 
-#volumes:
-#  db_data:
+volumes:
+  db_data2:
 
