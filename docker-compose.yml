@@ -82,10 +82,10 @@ services:
      # context: ./Front-End/Chiccrm
       dockerfile: Dockerfile
     ports:
-      - 3003:3003
-    depends_on:
-      - backendchic
+      - 9000:9000
+   # depends_on:
+      #- backendchic
 
-volumes:
-  db_data:
+#volumes:
+#  db_data:
 
