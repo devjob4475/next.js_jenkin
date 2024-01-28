@@ -1,8 +1,13 @@
+import { Box, Button } from '@mui/material'
 import React from 'react'
 
 function index() {
   return (
-    <div>Thananchai Sittikun Automate Ci/CD 28/01/67 15.44</div>
+    <div>
+      <Box sx={{width:"100%",height:"100vh",bgcolor:"blue"}}>
+        <Button>Test</Button>
+      </Box>
+    </div>
   )
 }
 
