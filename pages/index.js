@@ -5,7 +5,7 @@ function index() {
   return (
     <div>
       <Box sx={{width:"100%",height:"100vh",bgcolor:"blue"}}>
-        <Button>Test</Button>
+        <Button color='success'>Submit</Button>
       </Box>
     </div>
   )
